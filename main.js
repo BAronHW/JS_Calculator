@@ -20,7 +20,9 @@ deletebtn.addEventListener("click", () => {
 });
 
 function appendNumber(num){
-    currentop.textContent += num;
+    if(isNaN(num) == false){
+        currentop.textContent += num;
+    }
 }
 
 function clear(){
