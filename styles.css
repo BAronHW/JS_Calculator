@@ -36,12 +36,12 @@ body{
     word-break: break-all;
 }
 
-.last-operation {
+#last-operation {
     min-height: 32px;
     font-size: 20px;
 }
 
-.current-operation {
+#current-operation {
     min-height: 64px;
     font-size: 40px;
 }
