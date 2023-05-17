@@ -17,7 +17,6 @@ let currentoperation;
 let result;
 
 numbtns.forEach((button)=>{
-    console.log(button.innerHTML);
     let temp = parseInt(button.innerHTML)
     button.addEventListener("click", () => {
         appendNumber(temp);
@@ -27,8 +26,8 @@ numbtns.forEach((button)=>{
 });
 
 eqbtn.addEventListener("click", () => {
-    operate(currentoperation,leftoperation, (currentop.textContent).toString())
-    console.log(bot);
+    currentop.textContent = operate(currentoperation,prevop.textContent, currentop.textContent);
+    
 });
 
 addbtn.addEventListener("click", () => {
@@ -36,7 +35,6 @@ addbtn.addEventListener("click", () => {
     leftoperation = currentop.textContent;
     currentoperation = '+';
     currentop.textContent += '+';
-    console.log(leftoperation,rightoperation,currentoperation)
     update();
 });
 
@@ -45,7 +43,6 @@ subbtn.addEventListener("click", () => {
     leftoperation = currentop.textContent;
     currentoperation = '-';
     currentop.textContent += '-';
-    console.log(leftoperation,rightoperation,currentoperation)
     update();
 });
 
@@ -54,7 +51,6 @@ divbtn.addEventListener("click", () => {
     leftoperation = currentop.textContent;
     currentoperation = '÷';
     currentop.textContent += '÷';
-    console.log(leftoperation,rightoperation,currentoperation)
     update();
 });
 
@@ -63,7 +59,6 @@ multbtn.addEventListener("click", () => {
     leftoperation = currentop.textContent;
     currentoperation = '×';
     currentop.textContent += '×';
-    console.log(leftoperation,rightoperation,currentoperation)
     update();
 });
 
@@ -109,19 +104,27 @@ function appenddecimal(){
 }
 
 function add(leftoperation, rightoperation){
-    return console.log(leftoperation + rightoperation);
+    
+    result = leftoperation + rightoperation;
+    return result
 }
 
 function subtract(leftoperation, rightoperation){
-    return console.log(leftoperation - rightoperation);
+    
+    result = leftoperation - rightoperation;
+    return result;
 }
 
 function multiply(leftoperation, rightoperation){
-    return console.log(leftoperation * rightoperation);
+    
+    result = leftoperation * rightoperation;
+    return result;
 }
 
 function divide(leftoperation, rightoperation){
-    return console.log(leftoperation / rightoperation);
+    
+    result = leftoperation / rightoperation;
+    return result;
 }
 
 function update(){
@@ -129,20 +132,18 @@ function update(){
     currentop.textContent = '';
 }
 
-function operate(operator, leftoperation, rightoperation){
-    leftoperation = leftoperation;
-    rightoperation = rightoperation;
-    switch(operator){
-        case '+':
-            return add(leftoperation, rightoperation)
-        
-        case '-':
-            return subtract(leftoperation, rightoperation);
-
-        case '×':
-            return multiply(leftoperation, rightoperation);
-
-        case '÷':
-            return divide(leftoperation, rightoperation);
+function operate(operator, leftoperation, rightoperation) {
+    leftoperation = parseFloat(leftoperation);
+    rightoperation = parseFloat(rightoperation);
+  
+    switch (operator) {
+      case '+':
+        return add(leftoperation, rightoperation);
+      case '-':
+        return subtract(leftoperation, rightoperation);
+      case '×':
+        return multiply(leftoperation, rightoperation);
+      case '÷':
+        return divide(leftoperation, rightoperation);
     }
-}
+  }
