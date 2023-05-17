@@ -11,9 +11,10 @@ const decbtn = document.getElementById('decbtn');
 const eqbtn = document.getElementById('eqbtn');
 const addbtn = document.getElementById('addbtn');
 
-let leftoperation = 0;
-let rightoperation =0;
+let leftoperation;
+let rightoperation;
 let currentoperation;
+let result;
 
 numbtns.forEach((button)=>{
     console.log(button.innerHTML);
@@ -25,11 +26,17 @@ numbtns.forEach((button)=>{
     });
 });
 
+eqbtn.addEventListener("click", () => {
+    operate(currentoperation,leftoperation, (currentop.textContent).toString())
+    console.log(bot);
+});
+
 addbtn.addEventListener("click", () => {
     if((currentop.textContent) == 0) return;
     leftoperation = currentop.textContent;
     currentoperation = '+';
     currentop.textContent += '+';
+    console.log(leftoperation,rightoperation,currentoperation)
     update();
 });
 
@@ -38,28 +45,34 @@ subbtn.addEventListener("click", () => {
     leftoperation = currentop.textContent;
     currentoperation = '-';
     currentop.textContent += '-';
+    console.log(leftoperation,rightoperation,currentoperation)
     update();
 });
 
 divbtn.addEventListener("click", () => {
     if((currentop.textContent) == 0) return;
     leftoperation = currentop.textContent;
-    currentoperation = '/';
+    currentoperation = '÷';
     currentop.textContent += '÷';
+    console.log(leftoperation,rightoperation,currentoperation)
     update();
 });
 
 multbtn.addEventListener("click", () => {
     if((currentop.textContent) == 0) return;
     leftoperation = currentop.textContent;
-    currentoperation = '*';
+    currentoperation = '×';
     currentop.textContent += '×';
+    console.log(leftoperation,rightoperation,currentoperation)
     update();
 });
 
 clearbtn.addEventListener("click", () => {
     clear();
     currentoperation = null;
+    leftoperation = null;
+    rightoperation = null;
+    result = null;
 })
 
 deletebtn.addEventListener("click", () => {
@@ -96,19 +109,19 @@ function appenddecimal(){
 }
 
 function add(leftoperation, rightoperation){
-    return leftoperation + rightoperation;
+    return console.log(leftoperation + rightoperation);
 }
 
 function subtract(leftoperation, rightoperation){
-    return leftoperation - rightoperation;
+    return console.log(leftoperation - rightoperation);
 }
 
 function multiply(leftoperation, rightoperation){
-    return leftoperation * rightoperation;
+    return console.log(leftoperation * rightoperation);
 }
 
 function divide(leftoperation, rightoperation){
-    return leftoperation / rightoperation;
+    return console.log(leftoperation / rightoperation);
 }
 
 function update(){
@@ -117,8 +130,8 @@ function update(){
 }
 
 function operate(operator, leftoperation, rightoperation){
-    leftoperation = Number(leftoperation);
-    rightoperation = Number(rightoperation);
+    leftoperation = leftoperation;
+    rightoperation = rightoperation;
     switch(operator){
         case '+':
             return add(leftoperation, rightoperation)
