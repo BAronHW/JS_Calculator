@@ -2,7 +2,7 @@ const numbtns = document.querySelectorAll(".btn");
 const clearbtn = document.getElementById("clearbtn");
 const deletebtn = document.getElementById("deletebtn");
 const currentop = document.getElementById('current-operation');
-const prevop = document.getElementById('prev-operation');
+const prevop = document.getElementById('last-operation');
 const divbtn = document.getElementById('divbtn');
 const multbtn = document.getElementById('multbtn');
 const subbtn = document.getElementById('subbtn');
@@ -13,6 +13,7 @@ const addbtn = document.getElementById('addbtn');
 
 let leftoperation = 0;
 let rightoperation =0;
+let currentoperation;
 
 numbtns.forEach((button)=>{
     console.log(button.innerHTML);
@@ -24,8 +25,41 @@ numbtns.forEach((button)=>{
     });
 });
 
+addbtn.addEventListener("click", () => {
+    if((currentop.textContent) == 0) return;
+    leftoperation = currentop.textContent;
+    currentoperation = '+';
+    currentop.textContent += '+';
+    update();
+});
+
+subbtn.addEventListener("click", () => {
+    if((currentop.textContent) == 0) return;
+    leftoperation = currentop.textContent;
+    currentoperation = '-';
+    currentop.textContent += '-';
+    update();
+});
+
+divbtn.addEventListener("click", () => {
+    if((currentop.textContent) == 0) return;
+    leftoperation = currentop.textContent;
+    currentoperation = '/';
+    currentop.textContent += '÷';
+    update();
+});
+
+multbtn.addEventListener("click", () => {
+    if((currentop.textContent) == 0) return;
+    leftoperation = currentop.textContent;
+    currentoperation = '*';
+    currentop.textContent += '×';
+    update();
+});
+
 clearbtn.addEventListener("click", () => {
     clear();
+    currentoperation = null;
 })
 
 deletebtn.addEventListener("click", () => {
@@ -41,11 +75,6 @@ function appendNumber(num){
         currentop.textContent += num;
     }
 }
-
-// function setoperation(operation){
-//     leftoperation = currentop.textContent
-    
-// }
 
 function clear(){
     currentop.textContent = "";
@@ -82,6 +111,11 @@ function divide(leftoperation, rightoperation){
     return leftoperation / rightoperation;
 }
 
+function update(){
+    prevop.textContent = currentop.textContent;
+    currentop.textContent = '';
+}
+
 function operate(operator, leftoperation, rightoperation){
     leftoperation = Number(leftoperation);
     rightoperation = Number(rightoperation);
@@ -99,5 +133,3 @@ function operate(operator, leftoperation, rightoperation){
             return divide(leftoperation, rightoperation);
     }
 }
-
-
