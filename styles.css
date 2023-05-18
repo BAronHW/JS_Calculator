@@ -7,10 +7,12 @@ body{
     background-color: #FCB31B;
 }
 
+
 .main{
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     height: 75vh;
     min-height: 500px;
     padding: 10px;
@@ -83,6 +85,8 @@ body{
 
 .opbtndiv{
     display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: row;
     padding: 5px;
     gap: 10px;
@@ -106,5 +110,12 @@ body{
 
 .operationbtn:hover{
     background-color: crimson;
+}
+
+.footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5vh;
 }
 

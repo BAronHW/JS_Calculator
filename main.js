@@ -11,10 +11,7 @@ const decbtn = document.getElementById('decbtn');
 const eqbtn = document.getElementById('eqbtn');
 const addbtn = document.getElementById('addbtn');
 
-let leftoperation;
-let rightoperation;
 let currentoperation;
-let result;
 
 numbtns.forEach((button)=>{
     let temp = parseInt(button.innerHTML)
@@ -32,6 +29,9 @@ eqbtn.addEventListener("click", () => {
 
 addbtn.addEventListener("click", () => {
     if((currentop.textContent) == 0) return;
+    if(currentop.textContent !== 0){
+        prevop.textContent = currentop.textContent;
+    }
     leftoperation = currentop.textContent;
     currentoperation = '+';
     currentop.textContent += '+';
@@ -40,6 +40,9 @@ addbtn.addEventListener("click", () => {
 
 subbtn.addEventListener("click", () => {
     if((currentop.textContent) == 0) return;
+    if(currentop.textContent !== 0){
+        prevop.textContent = currentop.textContent;
+    }
     leftoperation = currentop.textContent;
     currentoperation = '-';
     currentop.textContent += '-';
@@ -48,6 +51,9 @@ subbtn.addEventListener("click", () => {
 
 divbtn.addEventListener("click", () => {
     if((currentop.textContent) == 0) return;
+    if(currentop.textContent !== 0){
+        prevop.textContent = currentop.textContent;
+    }
     leftoperation = currentop.textContent;
     currentoperation = '÷';
     currentop.textContent += '÷';
@@ -56,6 +62,9 @@ divbtn.addEventListener("click", () => {
 
 multbtn.addEventListener("click", () => {
     if((currentop.textContent) == 0) return;
+    if(currentop.textContent !== 0){
+        prevop.textContent = currentop.textContent;
+    }
     leftoperation = currentop.textContent;
     currentoperation = '×';
     currentop.textContent += '×';
@@ -99,7 +108,7 @@ function deletenum(){
 
 function appenddecimal(){
     let current = currentop.textContent.toString();
-    if(current.includes(".") || current == 0) return;
+    if(current.includes(".") || current == '') return;
     currentop.textContent += '.';
 }
 
@@ -135,15 +144,18 @@ function update(){
 function operate(operator, leftoperation, rightoperation) {
     leftoperation = parseFloat(leftoperation);
     rightoperation = parseFloat(rightoperation);
-  
     switch (operator) {
-      case '+':
-        return add(leftoperation, rightoperation);
-      case '-':
-        return subtract(leftoperation, rightoperation);
-      case '×':
-        return multiply(leftoperation, rightoperation);
-      case '÷':
-        return divide(leftoperation, rightoperation);
+        case '+':
+            return add(leftoperation, rightoperation);
+        case '-':
+            return subtract(leftoperation, rightoperation);
+        case '×':
+            return multiply(leftoperation, rightoperation);
+        case '÷':
+            return divide(leftoperation, rightoperation);
     }
+}
+
+  function blur(){
+
   }
