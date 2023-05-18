@@ -4,7 +4,7 @@ body{
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: #FCB31B;
+    background-color: rgba(223, 217, 207, 0.938);;
 }
 
 
@@ -60,7 +60,7 @@ body{
     padding: 20px;
     border: 2px solid;
     border-radius: 5px;
-    background-color:gainsboro;
+    background-color:rgb(219, 202, 144);;
     font-size: 20px;
 }
 
@@ -90,22 +90,35 @@ body{
     flex-direction: row;
     padding: 5px;
     gap: 10px;
+    
 }
 
 .operationbtn{
     padding: 20px;
     border: 2px solid;
     border-radius: 5px;
-    background-color:gainsboro;
+    
     font-size: 20px;
 }
 
-.btn:hover{
-    background-color: yellowgreen;
+#clearbtn{
+    background-color:rgba(195, 241, 183, 0.849);
 }
 
+#deletebtn{
+    background-color: rgb(219, 202, 144);
+}
+
+.btn:hover{
+    background-color: rgb(158, 158, 158);
+}
+
+#deletebtn:hover{background-color: rgb(187, 173, 124);}
+
+#clearbtn:hover{background-color:rgba(168, 209, 158, 0.849);}
+
 .opbtn:hover{
-    background-color: cyan;
+    background-color: rgb(187, 173, 124);
 }
 
 .operationbtn:hover{
